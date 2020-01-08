@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register Form</title>
+</head>
+<body>
+	<h2>Regístrate</h2>
+	<form action="/users/register" method="POST" enctype="multipart/form-data">
+		<div>
+			<label>Nombre completo:</label>
+			<input type="text" name="user_name">
+		</div>
+		<div>
+			<label>Email:</label>
+			<input type="email" name="user_email">
+		</div>
+		<div>
+			<label>Contraseña:</label>
+			<input type="password" name="user_password">
+		</div>
+		<div>
+			<label>Avatar:</label>
+			<input type="file" name="user_avatar">
+		</div>
+		<button type="submit">Registrarse</button>
+	</form>
+</body>
+</html>
