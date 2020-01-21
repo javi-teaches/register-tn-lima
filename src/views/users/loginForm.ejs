@@ -6,13 +6,9 @@
 	<title>Register Form</title>
 </head>
 <body>
-	<h2>Regístrate</h2>
+	<h2>Logueate</h2>
 	<%- include('../partials/navbar'); %>
-	<form action="/users/register" method="POST" enctype="multipart/form-data">
-		<div>
-			<label>Nombre completo:</label>
-			<input type="text" name="user_name">
-		</div>
+	<form action="/users/login" method="POST">
 		<div>
 			<label>Email:</label>
 			<input type="email" name="user_email">
@@ -21,11 +17,12 @@
 			<label>Contraseña:</label>
 			<input type="password" name="user_password">
 		</div>
-		<div>
-			<label>Avatar:</label>
-			<input type="file" name="user_avatar">
-		</div>
-		<button type="submit">Registrarse</button>
+		<button type="submit">Iniciar sesion</button>
+		<br>
+		<label>
+			<input type="checkbox" name="remember">
+			Recordarme
+		</label>
 	</form>
 </body>
 </html>

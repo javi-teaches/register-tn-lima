@@ -1,0 +1,21 @@
+<ul>
+	<% if(isLogged) { %>
+		<li>
+			<img src="/images/avatars/<%= user.avatar %>" width="50">
+			<br>
+			Hola <%= user.user_name; %>
+			<br>
+			<a href="/users/profile">Perfil</a>
+		</li>
+		<li>
+			<a href="/users/Logout">Salir</a>
+		</li>
+	<% } else { %>
+		<li>
+			<a href="/users/register">Registrarse</a>
+		</li>
+		<li>
+			<a href="/users/login">Loguearse</a>
+		</li>
+	<% } %>
+</ul>

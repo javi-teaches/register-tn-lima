@@ -1,9 +1,16 @@
 [
  {
   "id": 1,
-  "avatar": "1578524909513.jpg",
-  "user_name": "Lando",
-  "user_email": "lando@dh.com",
-  "user_password": "$2b$11$smjsu/3jUrJONavDT/M/8.I5CTdnc3s.RKqDRAp0/noCVjEQFE.eO"
+  "avatar": "1579561164265.jpg",
+  "user_name": "Javi Herrera",
+  "user_email": "javi@dh.com",
+  "user_password": "$2b$11$/YBCW8Ebx1u2BO44Cy77c.C2bF9V14K36roZ4pKwIUe0HqVorhmES"
+ },
+ {
+  "id": 2,
+  "avatar": "1579561189922.jpg",
+  "user_name": "Kenyi West",
+  "user_email": "kenyi@dh.com",
+  "user_password": "$2b$11$zdz3sgwhM7MryW0X..iUl.KnBNWpPwEmzs0cY37uY6ce6/msvYubu"
  }
 ]

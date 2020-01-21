@@ -32,6 +32,13 @@ function storeUser (userData) {
 	fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
 }
 
+function getUserByEmail (email) {
+	let allUsers = getAllUsers();
+	let userFind = allUsers.find(oneUser => oneUser.user_email == email);
+	return userFind;
+}
+
+
 const controller = {
 	registerForm: (req, res) => {
 		res.render('users/registerForm');
@@ -51,8 +58,49 @@ const controller = {
 		res.redirect('/');
 	},
 	loginForm: (req, res) => {
-		res.send('Acá irá el formulario de login');
+		res.render('users/loginForm');
+	},
+	processLogin: (req, res) => {
+		// Busco al usuario por email
+		let userToLogin = getUserByEmail(req.body.user_email);
+
+		// Valido si existe el usuario
+		if(userToLogin != undefined) {
+			// Magia
+			if (bcrypt.compareSync(req.body.user_password, userToLogin.user_password)){
+				// Borramos la contraseña del objeto usuario
+				delete userToLogin.user_password;
+
+				// Pasamos al usuario a session
+				req.session.user = userToLogin;
+
+				if (req.body.remember) {
+					res.cookie('user', userToLogin.id, { maxAge: 180000});
+				}
+
+				// Redirección
+				return res.redirect('/users/profile');
+			} else {
+				res.send('Datos incorrectos');
+			}
+		} else {
+			res.send('El usuario no existe');
+		}
+	},
+	profile: (req, res) => {
+		res.render('users/profile', {
+			user: req.session.user
+		});
+	},
+	logout: (req, res) => {
+		// Destruimos la session
+		req.session.destroy();
+		// Pisar la cookie
+		res.cookie('user', null, { maxAge: -1 });
+		// Redirección
+		return res.redirect('/users/login');
 	}
+	
 };
 
 module.exports = controller

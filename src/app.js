@@ -4,6 +4,9 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
+const session = require('express-session');
+const localsMiddleware = require('./middlewares/localsMiddleware');
+const userCookieMiddleware = require('./middlewares/userCookieMiddleware');
 
 // ************ express() - (don't touch) ************
 const app = express();
@@ -14,6 +17,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
+app.use(session({
+  secret: 'lo que sea',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(userCookieMiddleware);
+app.use(localsMiddleware);
 
 // ************ Template Engine - (don't touch) ************
 app.set('view engine', 'ejs');
